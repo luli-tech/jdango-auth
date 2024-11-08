@@ -1,0 +1,234 @@
+<!-- <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>sign-up below</h1>
+    {%for message in messages%}
+    <p>{{message}}</p>
+    {%endfor%}
+
+    <form method="POST" action="register">
+      {% csrf_token %}
+      <label for="username">username:</label>
+      <input type="text" name="username" />
+      <label for="email">email:</label>
+      <input type="email" name="email" id="email" />
+      <label for="password">password:</label>
+      <input type="password" name="password" id="" />
+      <label for="repeat_password">repeat_password:</label>
+      <input type="password" name="password2" /><br />
+      <input type="submit" name="" id="" />
+    </form>
+    <a href="login">login</a>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Registration Form</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #4e54c8, #8f94fb);
+        overflow: hidden;
+      }
+
+      .register-container {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        width: 100%;
+        max-width: 400px;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        text-align: center;
+        color: #fff;
+        animation: fadeIn 1s ease-in-out;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .register-container h2 {
+        margin-bottom: 25px;
+        font-size: 26px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+
+      .input-group {
+        position: relative;
+        margin-bottom: 25px;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        outline: none;
+        background: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        transition: border 0.3s, background 0.3s;
+      }
+
+      .input-group input:focus {
+        border-color: #8f94fb;
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .input-group label {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        font-size: 16px;
+        color: #ddd;
+        transition: 0.3s;
+        pointer-events: none;
+      }
+
+      .input-group input:focus ~ label,
+      .input-group input:not(:placeholder-shown) ~ label {
+        top: -10px;
+        left: 10px;
+        font-size: 12px;
+        color: #8f94fb;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0 5px;
+        border-radius: 5px;
+      }
+
+      .login-option {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #8f94fb;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .login-option:hover {
+        color: #a1a8ff;
+      }
+
+      .register-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(135deg, #8f94fb, #4e54c8);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .register-button:hover {
+        background: linear-gradient(135deg, #6a6dfc, #3b3f99);
+        transform: translateY(-2px);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .register-container {
+          padding: 30px;
+        }
+
+        .register-container h2 {
+          font-size: 22px;
+        }
+
+        .input-group input,
+        .register-button {
+          font-size: 14px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="register-container">
+      <h2>Create Account</h2>
+      <form action="register" method="post">
+        {%csrf_token%}
+        <div class="input-group">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+            placeholder=" "
+          />
+          <label for="username">Username</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder=" "
+          />
+          <label for="email">Email</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            placeholder=" "
+          />
+          <label for="password">Password</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="password"
+            id="confirm-password"
+            name="password2"
+            required
+            placeholder=" "
+          />
+          <label for="confirm-password">Confirm Password</label>
+        </div>
+        <button type="submit" class="register-button">Sign Up</button>
+        <p>
+          <a href="login" class="login-option"
+            >Already have an account? Log in</a
+          >
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
